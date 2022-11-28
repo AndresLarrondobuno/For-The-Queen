@@ -14,11 +14,9 @@ class Azar:
     def asegurar_rolls(cantidad_de_rolls_asegurados):
         pass
 
-print(Azar.rollear_dados(75, 5, 1))
-print(Azar.rollear_dados(75, 5, 1))
-print(Azar.rollear_dados(75, 5, 1))
-print(Azar.rollear_dados(75, 5, 1))
-print(Azar.rollear_dados(75, 5, 1))
+
+
+
 
 
 

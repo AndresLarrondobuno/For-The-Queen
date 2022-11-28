@@ -55,198 +55,319 @@ habilidades_de_armas = { "perforar": {
                 "dano_en_area":True,
                 "multiplicador_de_dano":0.9,
                 'rolls':4
+            },
+            "morder": {
+                "nombre":"morder",
+                "efecto":'sangrado',
+                "dano_en_area":False,
+                "multiplicador_de_dano":0.9,
+                'rolls':2
+            },
+            "rebanar": {
+                "nombre":"rebanar",
+                "efecto":'',
+                "dano_en_area":False,
+                "multiplicador_de_dano":1,
+                'rolls':3
+            },
+            "estocada": {
+                "nombre":"estocada",
+                "efecto":'',
+                "dano_en_area":False,
+                "multiplicador_de_dano":1.2,
+                'rolls':4
             }
 }
 
-items = {  "lanza": {
-                "tipo":'arma',
-                "habilidades": [habilidades_de_armas['perforar'], habilidades_de_armas['desgarrar']],
+armas = {  
+            "lanza": {
+                "nombre":"lanza",
+                "habilidades": "perforar desgarrar",
+                "calidad":1,
                 "stats":{
-                    'dano_base':9,     
+                    'dano_base':9,
+                    'tipo_de_dano':'fisico',
                     'afinidad':'fuerza', 
                     'bonus_armadura':0,
                     'bonus_resistencia':0,
+                    'bonus_evasion':1,
                     'bonus_vitalidad':0,
                     'bonus_fuerza':0,
                     'bonus_inteligencia':0,
                     'bonus_velocidad':0,
                     'bonus_talento':0,
                     'bonus_observacion': 0,
-                    'bonus_concentracion':0,
+                    'bonus_enfoque':0,
                     'bonus_suerte':0}
                     },
             "arco_de_caza": {
-                "tipo":'arma',
-                "habilidades": [habilidades_de_armas['tiro'], habilidades_de_armas['tiro_de_francotirador']],
+                "nombre":"arco_de_caza",
+                "habilidades": "tiro tiro_de_francotirador",
+                "calidad":1,
                 "stats":{
-                    'dano_base':6,      #armas
-                    'afinidad':'observacion', #armas
+                    'dano_base':6,
+                    'tipo_de_dano':'fisico', 
+                    'afinidad':'observacion',
                     'bonus_armadura':0,
                     'bonus_resistencia':0,
+                    'bonus_evasion':0,
                     'bonus_vitalidad':0,
                     'bonus_fuerza':0,
                     'bonus_inteligencia':0,
                     'bonus_velocidad':0,
                     'bonus_talento':0,
                     'bonus_observacion': 0,
-                    'bonus_concentracion':0,
+                    'bonus_enfoque':0,
                     'bonus_suerte':0}
                     },
             "laud_roto": {
-                "tipo":'arma',
-                "habilidades": [habilidades_de_armas['sinfonia'], habilidades_de_armas['ritardando']],
+                "nombre":"laud_roto",
+                "habilidades": "sinfonia ritardando",
+                "calidad":1,
                 "stats":{
-                    'dano_base':6,      #armas
-                    'afinidad':'talento', #armas
+                    'dano_base':6,
+                    'tipo_de_dano':'magico',
+                    'afinidad':'talento', 
                     'bonus_armadura':0,
                     'bonus_resistencia':0,
+                    'bonus_evasion':0,
                     'bonus_vitalidad':0,
                     'bonus_fuerza':0,
                     'bonus_inteligencia':0,
                     'bonus_velocidad':0,
                     'bonus_talento':0,
                     'bonus_observacion': 0,
-                    'bonus_concentracion':0,
+                    'bonus_enfoque':0,
                     'bonus_suerte':0}
                     },
             "tomo_de_aprendiz": {
-                "tipo":'arma',
-                "habilidades": [habilidades_de_armas['maldecir'], habilidades_de_armas['explosion']],
+                "nombre":"tomo_de_aprendiz",
+                "habilidades": "maldecir explosion",
+                "calidad":1,
                 "stats":{
-                    'dano_base':7,      #armas
-                    'afinidad':'inteligencia', #armas
+                    'dano_base':7,    
+                    'tipo_de_dano':'magico', 
+                    'afinidad':'inteligencia', 
                     'bonus_armadura':0,
                     'bonus_resistencia':0,
+                    'bonus_evasion':0,
                     'bonus_vitalidad':0,
                     'bonus_fuerza':0,
                     'bonus_inteligencia':0,
                     'bonus_velocidad':0,
                     'bonus_talento':0,
                     'bonus_observacion': 0,
-                    'bonus_concentracion':0,
+                    'bonus_enfoque':0,
                     'bonus_suerte':0}
                     },
-            "botas_viejas": {
-                "tipo":'armadura',
-                "habilidades":'',
+            "espada_corta": {
+                "nombre":"espada_corta",
+                "habilidades": "rebanar estocada",
+                "calidad":1,
                 "stats":{
-                    'dano_base':'',      #armas
-                    'afinidad':'', #armas
+                    'dano_base':7,    
+                    'tipo_de_dano':'fisico', 
+                    'afinidad':'fuerza', 
+                    'bonus_armadura':0,
+                    'bonus_resistencia':0,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':0,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':0,
+                    'bonus_talento':0,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    },
+            "colmillos": {
+                "nombre":"colmillos",
+                "habilidades": "morder",
+                "calidad":1,
+                "stats":{
+                    'dano_base':7,    
+                    'tipo_de_dano':'fisico', 
+                    'afinidad':'fuerza', 
+                    'bonus_armadura':0,
+                    'bonus_resistencia':0,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':0,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':0,
+                    'bonus_talento':0,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    }
+}
+armaduras = {
+            "botas_viejas": {
+                "nombre":"botas_viejas",
+                "habilidad_pasiva":'',
+                "calidad":1,
+                "stats":{ 
                     'bonus_armadura':1,
                     'bonus_resistencia':0,
+                    'bonus_evasion':0,
                     'bonus_vitalidad':0,
                     'bonus_fuerza':0,
                     'bonus_inteligencia':0,
                     'bonus_velocidad':0,
                     'bonus_talento':0,
                     'bonus_observacion': 0,
-                    'bonus_concentracion':0,
+                    'bonus_enfoque':0,
                     'bonus_suerte':0}
                     },
+            "casco_roto": {
+                "nombre":"casco_roto",
+                "habilidad_pasiva":'',
+                "calidad":1,
+                "stats":{ 
+                    'bonus_armadura':1,
+                    'bonus_resistencia':1,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':1,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':0,
+                    'bonus_talento':0,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    },
+            "chaleco_de_cuero": {
+                "nombre":"chaleco_de_cuero",
+                "habilidad_pasiva":'',
+                "calidad":1,
+                "stats":{ 
+                    'bonus_armadura':2,
+                    'bonus_resistencia':1,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':0,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':0,
+                    'bonus_talento':0,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    },
+            "tunica": {
+                "nombre":"tunica",
+                "habilidad_pasiva":'',
+                "calidad":2,
+                "stats":{ 
+                    'bonus_armadura':1,
+                    'bonus_resistencia':2,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':0,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':3,
+                    'bonus_velocidad':0,
+                    'bonus_talento':0,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':1,
+                    'bonus_suerte':0}
+                    },
+            "cota_de_mallas": {
+                "nombre":"cota_de_mallas",
+                "habilidad_pasiva":'',
+                "calidad":2,
+                "stats":{ 
+                    'bonus_armadura':7,
+                    'bonus_resistencia':3,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':2,
+                    'bonus_fuerza':2,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':0,
+                    'bonus_talento':0,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    },
+            "traje_lujoso": {
+                "nombre":"traje_lujoso",
+                "habilidad_pasiva":'',
+                "calidad":2,
+                "stats":{ 
+                    'bonus_armadura':4,
+                    'bonus_resistencia':4,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':0,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':0,
+                    'bonus_talento':6,
+                    'bonus_observacion': 0,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    },
+            "chaleco_de_asesino": {
+                "nombre":"chaleco_de_asesino",
+                "habilidad_pasiva":'',
+                "calidad":2,
+                "stats":{ 
+                    'bonus_armadura':4,
+                    'bonus_resistencia':4,
+                    'bonus_evasion':0,
+                    'bonus_vitalidad':0,
+                    'bonus_fuerza':0,
+                    'bonus_inteligencia':0,
+                    'bonus_velocidad':2,
+                    'bonus_talento':6,
+                    'bonus_observacion': 7,
+                    'bonus_enfoque':0,
+                    'bonus_suerte':0}
+                    }
+}
+consumibles = {   
             "barba_de_dios": {
-                "tipo":'consumible',
-                "habilidades":'',
+                "nombre":"barba_de_dios",
                 "stats":{
                     'dano_base':'',      
-                    'afinidad':'',
                     'efecto_en_tablero':'curacion',
                     'efecto_en_combate':'curacion',
-                    'curacion_base': 18,
-                    'bonus_armadura':0,
-                    'bonus_resistencia':0,
-                    'bonus_vitalidad':0,
-                    'bonus_fuerza':0,
-                    'bonus_inteligencia':0,
-                    'bonus_velocidad':0,
-                    'bonus_talento':0,
-                    'bonus_observacion': 0,
-                    'bonus_concentracion':0,
-                    'bonus_suerte':0}
+                    'curacion_base': 18}
                     },
             "raiz_dorada": {
-                "tipo":'consumible',
-                "habilidades":'',
+                "nombre":"raiz_dorada",
                 "stats":{
                     'dano_base':'',      
-                    'afinidad':'',
                     'efecto_en_tablero':'concentrarse',
                     'efecto_en_combate':'concentrarse',
-                    'curacion_base': 0,
-                    'bonus_armadura':0,
-                    'bonus_resistencia':0,
-                    'bonus_vitalidad':0,
-                    'bonus_fuerza':0,
-                    'bonus_inteligencia':0,
-                    'bonus_velocidad':0,
-                    'bonus_talento':0,
-                    'bonus_observacion': 0,
-                    'bonus_concentracion':0,
-                    'bonus_suerte':0}
+                    'curacion_base': 0,}
                     },
             "hiedra_bailarina": {
-                "tipo":'consumible',
-                "habilidades": '',
+                "nombre":"hiedra_bailiarina",
                 "stats":{
                     'dano_base':'',      
-                    'afinidad':'',
                     'efecto_en_tablero':'movilidad',
                     'efecto_en_combate':'aumentar_velocidad',
-                    'curacion_base': 0,
-                    'bonus_armadura':0,
-                    'bonus_resistencia':0,
-                    'bonus_vitalidad':0,
-                    'bonus_fuerza':0,
-                    'bonus_inteligencia':0,
-                    'bonus_velocidad':0,
-                    'bonus_talento':0,
-                    'bonus_observacion': 0,
-                    'bonus_concentracion':0,
-                    'bonus_suerte':0}
+                    'curacion_base': 0}
                     },
             "panax": {
-                "tipo":'consumible',
-                "habilidades": '',
+                "nombre":"panax",
                 "stats":{
                     'dano_base':'',      
-                    'afinidad':'',
                     'efecto_en_tablero':'curar_veneno',
                     'efecto_en_combate':'curar_veneno',
-                    'curacion_base': 0,
-                    'bonus_armadura':0,
-                    'bonus_resistencia':0,
-                    'bonus_vitalidad':0,
-                    'bonus_fuerza':0,
-                    'bonus_inteligencia':0,
-                    'bonus_velocidad':0,
-                    'bonus_talento':0,
-                    'bonus_observacion': 0,
-                    'bonus_concentracion':0,
-                    'bonus_suerte':0}
+                    'curacion_base': 0}
                     },
             "hierba_del_erudito": {
-                "tipo":'consumible',
-                "habilidades": '',
+                "nombre":"hierba_del_erudito",
                 "stats":{
                     'dano_base':'',      
-                    'afinidad':'',
                     'efecto_en_tablero':'ganar_xp',
                     'efecto_en_combate':'ganar_xp',
-                    'curacion_base': 0,
-                    'bonus_armadura':0,
-                    'bonus_resistencia':0,
-                    'bonus_vitalidad':0,
-                    'bonus_fuerza':0,
-                    'bonus_inteligencia':0,
-                    'bonus_velocidad':0,
-                    'bonus_talento':0,
-                    'bonus_observacion': 0,
-                    'bonus_concentracion':0,
-                    'bonus_suerte':0}
-                    },
+                    'curacion_base': 0}
+                    }
+}
 
-    }
 
 clases = {  "herrero": {
+                "nombre":"herrero",
                 "arma_inicial":'lanza',
                 "habilidad_pasiva":'firmeza',
                 "atributos":{
@@ -264,6 +385,7 @@ clases = {  "herrero": {
                     'puntos_de_enfoque':4}
             },
             "erudito": {
+                "nombre":"erudito",
                 "arma_inicial":'tomo_de_aprendiz',
                 "habilidad_pasiva": 'reenfocar',
                 "atributos":{
@@ -281,6 +403,7 @@ clases = {  "herrero": {
                     'puntos_de_enfoque':5}
             },
             "bardo": {
+                "nombre":"bardo",
                 "arma_inicial":'laud_roto',
                 "habilidad_pasiva":'entretener',
                 "atributos":{
@@ -298,6 +421,7 @@ clases = {  "herrero": {
                     'puntos_de_enfoque':4}
             },
             "cazador": {
+                "nombre":"cazador",
                 "arma_inicial":'arco_de_caza',
                 "habilidad_pasiva":'tiro_cargado',
                 "atributos":{
@@ -316,13 +440,70 @@ clases = {  "herrero": {
             },
     }
     
+criaturas = { "esqueleto":{
+                    'nombre':'esqueleto',
+                    'arma':'espada_corta',
+                    'nivel':0,
+                    'puntos_de_vida':17,
+                    'dano_de_ataque':4,
+                    'armadura':1,
+                    'resistencia':0,
+                    'evasion':0
+            },
+            "lobo":{
+                    'nombre':'lobo',
+                    'arma':'colmillos',
+                    'nivel':1,
+                    'puntos_de_vida':16,
+                    'dano_de_ataque':6,
+                    'armadura':0,
+                    'resistencia':0,
+                    'velocidad':85,
+                    'evasion':5
+            },
+            "murcielago":{
+                    'nombre':'murcielago',
+                    'arma':'colmillos',
+                    'nivel':1,
+                    'puntos_de_vida':15,
+                    'dano_de_ataque':5,
+                    'armadura':0,
+                    'resistencia':1,
+                    'velocidad':90,
+                    'evasion':10
+            }
+}
+
+
 
 class AdministradorDeBaseDeDatos:
-
     def __init__(self, nombre):
         self.conexion = sql.connect(nombre + ".db")
-        self.crear_tabla_jugadores()
+        #tablas a llenar en ejecucion
+        self.crear_tabla_jugadores() 
+        self.crear_tabla_aventureros()
+
+        #tablas que se llenan al iniciar el programa
         self.crear_tabla_clases()
+        self.crear_tabla_criaturas()
+        self.crear_tabla_armas()
+        self.crear_tabla_armaduras()
+        self.crear_tabla_consumibles()
+        self.crear_tabla_habilidades_de_armas()
+
+        #inserts iniciales
+        self.insertar_clases()
+        self.insertar_criaturas()
+        self.insertar_armas()
+        self.insertar_armaduras()
+        self.insertar_consumibles()
+        self.insertar_habilidades_de_armas()
+
+        '''
+        inserts en ejecucion, no van a ir en este constructor sino en el de Jugador y Aventurero respectivamente
+        self.insertar_jugador()
+        self.insertar_aventurero()
+        '''
 
     def realizar_consulta(self, query):     
         cursor  = self.conexion.cursor()
@@ -342,6 +523,7 @@ class AdministradorDeBaseDeDatos:
     def efectuar_cambios(self):
         self.conexion.commit()
     
+
     def crear_tabla_jugadores(self):
         cursor = self.conexion.cursor()
         consulta = f'''CREATE TABLE IF NOT EXISTS jugadores (
@@ -349,12 +531,36 @@ class AdministradorDeBaseDeDatos:
                     nombre TEXT )'''
         cursor.execute(consulta)
         self.efectuar_cambios()
+    
 
-    def crear_tabla_personajes(self):
+    def crear_tabla_clases(self):
         cursor = self.conexion.cursor()
-        consulta = f'''CREATE TABLE IF NOT EXISTS personajes (
+        consulta = f'''CREATE TABLE IF NOT EXISTS clases (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                    nombre TEXT,
+                    arma_inicial TEXT,
+                    habilidad_pasiva TEXT,
+                    vitalidad INT,
+                    fuerza INT,
+                    inteligencia INT,
+                    velocidad INT,
+                    talento INT,
+                    observacion INT,
+                    suerte INT,
+                    armadura INT,
+                    resistencia INT,
+                    evasion INT,
+                    puntos_de_enfoque INT)'''
+        cursor.execute(consulta)
+        self.efectuar_cambios()
+
+
+    def crear_tabla_aventureros(self):
+        cursor = self.conexion.cursor()
+        consulta = f'''CREATE TABLE IF NOT EXISTS aventureros (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nombre TEXT, 
+                nombre TEXT,
+                arma INT, 
                 clase TEXT, 
                 habilidad_pasiva TEXT, 
                 nivel INT, 
@@ -368,31 +574,89 @@ class AdministradorDeBaseDeDatos:
                 armadura INT, 
                 resistencia INT, 
                 evasion INT, 
-                vida_base INT,
+                vida_base INT, 
                 puntos_de_enfoque INT )'''
         cursor.execute(consulta)
         self.efectuar_cambios()
     
-    def crear_tabla_items(self):
+
+    def crear_tabla_criaturas(self):
         cursor = self.conexion.cursor()
-        consulta = f'''CREATE TABLE IF NOT EXISTS items (
+        consulta = f'''CREATE TABLE IF NOT EXISTS criaturas (
                     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                    nombre TEXT, 
-                    dano_base INT,     
-                    afinidad TEXT, 
-                    bonus_armadura INT,
-                    bonus_resistencia INT,
+                    nombre TEXT,
+                    arma TEXT,
+                    nivel INT,
+                    puntos_de_vida INT,
+                    dano_de_ataque INT,
+                    armadura INT,
+                    resistencia INT,
+                    evasion INT )'''
+        cursor.execute(consulta)
+        self.efectuar_cambios()
+    
+    
+    def crear_tabla_armas(self):
+        cursor = self.conexion.cursor()
+        consulta = f'''CREATE TABLE IF NOT EXISTS armas (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                    nombre TEXT,
+                    habilidades TEXT,
+                    calidad INT, 
+                    dano_base INT,
+                    tipo_de_dano TEXT,     
+                    afinidad TEXT,
                     bonus_vitalidad INT,
                     bonus_fuerza INT,
                     bonus_inteligencia INT,
                     bonus_velocidad INT,
                     bonus_talento INT,
                     bonus_observacion INT,
-                    bonus_concentracion INT,
-                    bonus_suerte INT )'''
+                    bonus_suerte INT, 
+                    bonus_armadura INT,
+                    bonus_resistencia INT,
+                    bonus_evasion INT,
+                    bonus_enfoque INT
+                    )'''
         cursor.execute(consulta)
         self.efectuar_cambios()
-    
+
+
+    def crear_tabla_armaduras(self):
+        cursor = self.conexion.cursor()
+        consulta = f'''CREATE TABLE IF NOT EXISTS armaduras (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                    nombre TEXT,
+                    habilidad_pasiva TEXT,
+                    calidad INT,   
+                    bonus_vitalidad INT,
+                    bonus_fuerza INT,
+                    bonus_inteligencia INT,
+                    bonus_velocidad INT,
+                    bonus_talento INT,
+                    bonus_observacion INT,
+                    bonus_suerte INT, 
+                    bonus_armadura INT,
+                    bonus_resistencia INT,
+                    bonus_evasion INT,
+                    bonus_enfoque INT )'''
+        cursor.execute(consulta)
+        self.efectuar_cambios()
+
+
+    def crear_tabla_consumibles(self):
+        cursor = self.conexion.cursor()
+        consulta = f'''CREATE TABLE IF NOT EXISTS consumibles (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                    nombre TEXT,
+                    dano_base TEXT,
+                    curacion_base INT,
+                    efecto_en_tablero TEXT,
+                    efecto_en_combate TEXT )'''
+        cursor.execute(consulta)
+        self.efectuar_cambios()
+
+
     def crear_tabla_habilidades_de_armas(self):
         cursor = self.conexion.cursor()
         consulta = f'''CREATE TABLE IF NOT EXISTS habilidades_de_armas (
@@ -405,18 +669,17 @@ class AdministradorDeBaseDeDatos:
         cursor.execute(consulta)
         self.efectuar_cambios()
     
+
     def insertar_jugador(self, jugador):#en ejecucion
         query = f"INSERT INTO jugadores VALUES (NULL, '{jugador.nombre}')"
         self.realizar_consulta_de_cambio(query)
-    
-    def guardar_personaje_en_BD(self, personaje):#en ejecucion
-        pass
 
-    
+
     def insertar_clase(self, clase):
         cursor  = self.conexion.cursor()
-        insert = f'''INSERT INTO personajes VALUES (
+        insert = f'''INSERT INTO clases VALUES (
                     NULL,
+                    '{clases[clase]['nombre']}',                    
                     '{clases[clase]['arma_inicial']}',                    
                     '{clases[clase]['habilidad_pasiva']}',   
                     '{clases[clase]['atributos']['vitalidad']}',                         
@@ -433,26 +696,108 @@ class AdministradorDeBaseDeDatos:
         cursor.execute(insert)
         self.efectuar_cambios()
     
-    def insertar_item(self, item):
+
+    def insertar_clases(self):
+        for clase in clases:
+            self.insertar_clase(clase)
+
+
+    def insertar_criatura(self, criatura):
         cursor  = self.conexion.cursor()
-        insert = f'''INSERT INTO personajes VALUES (
+        insert = f'''INSERT INTO criaturas VALUES (
                     NULL,
-                    '{items[item]['tipo']}',
-                    '{items[item]['dano_base']}',
-                    '{items[item]['afinidad']}',
-                    '{items[item]['bonus_armadura']}',
-                    '{items[item]['bonus_resistencia']}',
-                    '{items[item]['bonus_vitalidad']}',
-                    '{items[item]['bonus_fuerza']}',
-                    '{items[item]['bonus_inteligencia']}',
-                    '{items[item]['bonus_velocidad']}',
-                    '{items[item]['bonus_talento']}',
-                    '{items[item]['bonus_observacion']}',
-                    '{items[item]['bonus_concentracion']}',,
-                    '{items[item]['bonus_suerte']}' )'''
+                    '{criaturas[criatura]['nombre']}',                    
+                    '{criaturas[criatura]['arma']}',                    
+                    '{criaturas[criatura]['nivel']}',                    
+                    '{criaturas[criatura]['puntos_de_vida']}',                    
+                    '{criaturas[criatura]['dano_de_ataque']}',                    
+                    '{criaturas[criatura]['armadura']}',                    
+                    '{criaturas[criatura]['resistencia']}',                    
+                    '{criaturas[criatura]['evasion']}' )'''
         cursor.execute(insert)
         self.efectuar_cambios()
     
+
+    def insertar_criaturas(self):
+        for criatura in criaturas:
+            self.insertar_criatura(criatura)
+    
+
+    def insertar_arma(self, arma):
+        cursor  = self.conexion.cursor()
+        insert = f'''INSERT INTO armas VALUES (
+                    NULL,
+                    '{armas[arma]['nombre']}',                   
+                    '{armas[arma]['habilidades']}',                    
+                    '{armas[arma]['calidad']}',   
+                    '{armas[arma]['stats']['dano_base']}',                         
+                    '{armas[arma]['stats']['tipo_de_dano']}',                         
+                    '{armas[arma]['stats']['afinidad']}',                         
+                    '{armas[arma]['stats']['bonus_vitalidad']}',                         
+                    '{armas[arma]['stats']['bonus_fuerza']}',             
+                    '{armas[arma]['stats']['bonus_inteligencia']}',             
+                    '{armas[arma]['stats']['bonus_velocidad']}',             
+                    '{armas[arma]['stats']['bonus_talento']}',             
+                    '{armas[arma]['stats']['bonus_observacion']}',             
+                    '{armas[arma]['stats']['bonus_suerte']}',             
+                    '{armas[arma]['stats']['bonus_armadura']}',             
+                    '{armas[arma]['stats']['bonus_resistencia']}',             
+                    '{armas[arma]['stats']['bonus_evasion']}',             
+                    '{armas[arma]['stats']['bonus_enfoque']}' )'''
+        cursor.execute(insert)
+        self.efectuar_cambios()
+    
+
+    def insertar_armas(self):
+        for arma in armas:
+            self.insertar_arma(arma)
+    
+
+    def insertar_armadura(self, armadura):
+        cursor  = self.conexion.cursor()
+        insert = f'''INSERT INTO armaduras VALUES (
+                    NULL,
+                    '{armaduras[armadura]['nombre']}',                   
+                    '{armaduras[armadura]['habilidad_pasiva']}',                    
+                    '{armaduras[armadura]['calidad']}',   
+                    '{armaduras[armadura]['stats']['bonus_vitalidad']}',                         
+                    '{armaduras[armadura]['stats']['bonus_fuerza']}',                         
+                    '{armaduras[armadura]['stats']['bonus_inteligencia']}',                         
+                    '{armaduras[armadura]['stats']['bonus_velocidad']}',                                                            
+                    '{armaduras[armadura]['stats']['bonus_talento']}',             
+                    '{armaduras[armadura]['stats']['bonus_observacion']}',             
+                    '{armaduras[armadura]['stats']['bonus_suerte']}',             
+                    '{armaduras[armadura]['stats']['bonus_armadura']}',             
+                    '{armaduras[armadura]['stats']['bonus_resistencia']}',             
+                    '{armaduras[armadura]['stats']['bonus_evasion']}',             
+                    '{armaduras[armadura]['stats']['bonus_enfoque']}' )'''
+        cursor.execute(insert)
+        self.efectuar_cambios()
+    
+
+    def insertar_armaduras(self):
+        for armadura in armaduras:
+            self.insertar_armadura(armadura)
+    
+
+    def insertar_consumible(self, consumible):
+        cursor  = self.conexion.cursor()
+        insert = f'''INSERT INTO consumibles VALUES (
+                    NULL,
+                    '{consumibles[consumible]['nombre']}',
+                    '{consumibles[consumible]['stats']['dano_base']}',
+                    '{consumibles[consumible]['stats']['curacion_base']}',
+                    '{consumibles[consumible]['stats']['efecto_en_tablero']}',
+                    '{consumibles[consumible]['stats']['efecto_en_combate']}' )'''
+        cursor.execute(insert)
+        self.efectuar_cambios()
+    
+
+    def insertar_consumibles(self):
+        for consumible in consumibles:
+            self.insertar_consumible(consumible)
+    
+
     def insertar_habilidad_de_arma(self, arma):
         cursor  = self.conexion.cursor()
         insert = f'''INSERT INTO habilidades_de_armas VALUES (
@@ -464,10 +809,12 @@ class AdministradorDeBaseDeDatos:
                     '{habilidades_de_armas[arma]['rolls']}' )'''
         cursor.execute(insert)
         self.efectuar_cambios()
-
-
-
     
+
+    def insertar_habilidades_de_armas(self):
+        for habilidad in habilidades_de_armas:
+            self.insertar_habilidad_de_arma(habilidad)
+
 
 administradorDeBaseDeDatos = AdministradorDeBaseDeDatos("For_The_Queen")
 
