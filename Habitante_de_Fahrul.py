@@ -1,5 +1,6 @@
 from Base_de_Datos import *
 from Azar import *
+from Constanstes_globales import *
 
 class Habitante_de_Fahrul:
     def __init__(self):
@@ -68,6 +69,7 @@ class Aventurero(Habitante_de_Fahrul):
         self.experiencia = 0
 
         self.nivel = 1
+
     
     @staticmethod
     def obtener_datos_de_clase(clase_del_aventurero):
@@ -82,9 +84,8 @@ class Aventurero(Habitante_de_Fahrul):
 
     
 
-    def agregar_informacion_de_clase(self):
-        clase_del_aventurero = self.clasificar_aventurero_por_clase()
-        datosDeClase = Aventurero.obtener_datos_de_clase(clase_del_aventurero)
+    def agregar_informacion_de_clase(self, clase):
+        datosDeClase = Aventurero.obtener_datos_de_clase(clase)
         self.arma = datosDeClase[2]
         self.habildiad_pasiva = datosDeClase[3]
         self.vitalidad = datosDeClase[4]
@@ -163,47 +164,54 @@ class Aventurero(Habitante_de_Fahrul):
     def moverse(self):
         puntos_de_movimiento = Azar.rollear_dados(self.velocidad, 5)
         #incrementar/decrementar posicion en la grilla segun donde clikea el jugador
+    
+
+    
         
         
 class Herrero(Aventurero):
     def __init__(self, nombre):
         super().__init__(nombre)
+        self.clase = "herrero"
         self.nombre = nombre
-        self.agregar_informacion_de_clase()
+        self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
         self.nivel = 7
-        self.sprite_path = "dc-mon\holy\paladin.png"
+        self.sprite = HERRERO
         
 
 class Erudito(Aventurero):
     def __init__(self, nombre):
         super().__init__(nombre)
+        self.clase = "erudito"
         self.nombre = nombre
-        self.agregar_informacion_de_clase()
+        self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.sprite_path = "dc-mon\wizard.png"
+        self.sprite = ERUDITO
 
 
 class Cazador(Aventurero):
     def __init__(self, nombre):
         super().__init__(nombre)
+        self.clase = "cazador"
         self.nombre = nombre
-        self.agregar_informacion_de_clase()
+        self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.sprite_path = "dc-mon\deep_elf_master_archer.png"
+        self.sprite = CAZADOR
 
 
 class Bardo(Aventurero):
     def __init__(self, nombre):
         super().__init__(nombre)
+        self.clase = "bardo"
         self.nombre = nombre
-        self.agregar_informacion_de_clase()
+        self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.sprite_path = "dc-mon\unique\mnoleg.png"
+        self.sprite = BARDO
 
 
 '''

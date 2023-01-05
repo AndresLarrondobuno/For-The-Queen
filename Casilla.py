@@ -1,13 +1,19 @@
-from constanstes_globales import ALTO_CASILLA, ANCHO_CASILLA
+
 
 class Casilla:
-    def __init__(self, coordenada_x, coordenada_y):
-        self.coordenada_x = coordenada_x
-        self.coordenada_y = coordenada_y
-        self.origen_de_dibujo = (int(coordenada_x*ALTO_CASILLA), int(coordenada_y*ANCHO_CASILLA))
+
+    ANCHO_TABLERO, ALTO_TABLERO = 600, 600
+    ANCHO_CASILLA, ALTO_CASILLA = int(ANCHO_TABLERO/10), int(ALTO_TABLERO/10)
+
+
+    def __init__(self, coordenadas):
+        self.x = coordenadas[0]
+        self.y = coordenadas[1]
+        self.coordenadas = coordenadas
+        self.origen_de_dibujo = (int(self.x*Casilla.ALTO_CASILLA), int(self.y*Casilla.ANCHO_CASILLA))
     
     def __repr__(self) -> str:
-        return self.coordenada_x, self.coordenada_y
+        return str((self.x, self.y))
 
 
 

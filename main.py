@@ -1,0 +1,4 @@
+from Partida import *
+
+
+

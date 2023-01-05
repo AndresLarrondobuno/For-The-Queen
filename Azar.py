@@ -14,6 +14,10 @@ class Azar:
     def asegurar_rolls(cantidad_de_rolls_asegurados):
         pass
 
+    def get_casilla_inicial(casillas):
+        casilla_inicial = rng.choice(list(casillas))
+        return casilla_inicial
+
 
 
 
