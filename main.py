@@ -1,4 +1,3 @@
-from Partida import *
 
 
 

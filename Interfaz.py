@@ -2,8 +2,6 @@ import pygame
 from Azar import *
 from Constanstes_globales import *
 from Seleccionador_de_Aventureros import *
-from Partida import *
-
 
 pygame.init()
 pygame.display.set_caption("For The Queen")
@@ -12,95 +10,57 @@ pygame.display.set_caption("For The Queen")
 class Interfaz:
 
     def __init__(self, tablero):
-        self.bucle_principal_de_partida(tablero)
-    
-
-    def bucle_principal_de_partida(self, tablero):
-        
-        def imprimir_tablero():
-            for casilla in tablero.casillas:
-                WIN.blit(PISO, (casilla.origen_de_dibujo))
-
-
-        def reimprimir_fondo():
-            WIN.blit(BG, (POSICION_INICIAL))
-
-        
-        def imprimir_pantalla_de_seleccion(jugador, texto, botones):
-            if jugador.aventurero == None:
-                superficie_de_texto = FUENTE_BASE.render(texto, True, COLOR_VERDE)
-                ancho_de_caja_de_texto, alto_de_caja_de_texto = superficie_de_texto.get_width(), superficie_de_texto.get_height()
-                caja_de_texto = pygame.Rect(0,0,ancho_de_caja_de_texto+5,alto_de_caja_de_texto+5)
-                #pygame.draw.rect(WIN, COLOR_CELESTE, caja_de_texto, 2)
-                
-                WIN.blit(superficie_de_texto, (caja_de_texto.x + 5, caja_de_texto.y + 5))
-
-                for boton in botones:
-                    boton.dibujar(WIN)
-        
-        
-        def agregar_seleccion_de_personaje_a_tablero(jugador):
-            
-            if jugador.aventurero == None:
-                casilla_inicial = Azar.get_casilla_inicial(tablero.casillas)
-                WIN.blit(jugador.aventurero.sprite, casilla_inicial.coordenadas)
-
-                
-        
-        encendido = True
-        reloj = pygame.time.Clock()
-        FPS = 60
-
-        contenedor_de_texto_seleccion_de_clases = pygame.Rect(0,0,0,32)
-        texto_de_usuario = ''
-
-
-        #boton_comenzar = Boton("Comenzar", COLOR_BLANCO)
-        WIN.blit(BG, (POSICION_INICIAL))
-       
+        self.ventana_principal = pygame.display.set_mode((tablero.ancho, tablero.alto))
+        self.background = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background.jpg")), (ANCHO_TABLERO, ALTO_TABLERO))
 
         boton_bardo = Boton_con_imagen(BARDO, CENTRO_IZQUIERDA_IZQUIERDA)
         boton_herrero = Boton_con_imagen(HERRERO, CENTRO_IZQUIERDA)
         boton_erudito = Boton_con_imagen(ERUDITO, CENTRO)
         boton_cazador = Boton_con_imagen(CAZADOR, CENTRO_DERECHA)
-        botones_de_seleccion_de_personaje = [boton_bardo, boton_herrero, boton_erudito, boton_cazador]
-        
-        while encendido:
-            reimprimir_fondo()
-            imprimir_pantalla_de_seleccion(partida.jugador, TEXTO_ELECCION_CLASES, botones_de_seleccion_de_personaje)
+        self.botones_de_seleccion_de_personaje = [boton_bardo, boton_herrero, boton_erudito, boton_cazador]
+    
 
+    def boton_clickeado(self):
+        for boton in self.botones_de_seleccion_de_personaje:
+            if boton.clickeado:
+                return True
+          
+
+
+    def imprimir_tablero(self, tablero):
+        for casilla in tablero.casillas:
+            self.ventana_principal.blit(PISO, (casilla.origen_de_dibujo))
+    
+
+    def reimprimir_fondo(self):
+        self.ventana_principal.blit(self.background, (POSICION_INICIAL))
+    
+
+    def imprimir_pantalla_de_seleccion(self, jugador, texto, botones):
+        if jugador.aventurero == None:
+            superficie_de_texto = FUENTE_BASE.render(texto, True, COLOR_VERDE)
+            ancho_de_caja_de_texto, alto_de_caja_de_texto = superficie_de_texto.get_width(), superficie_de_texto.get_height()
+            caja_de_texto = pygame.Rect(0,0,ancho_de_caja_de_texto+5,alto_de_caja_de_texto+5)
             
-            for evento in pygame.event.get(): #recorre los eventos ocurridos
-                posicion_mouse = pygame.mouse.get_pos()
+            self.background.blit(superficie_de_texto, (caja_de_texto.x + 5, caja_de_texto.y + 5))
 
-                if evento.type == pygame.QUIT:
-                    encendido = False
-                    pygame.quit()
-                    exit()
+            for boton in botones:
+                boton.dibujar(self.background)
 
-                if evento.type == pygame.KEYDOWN: 
-                    if evento.key == pygame.K_BACKSPACE:
-                        texto_de_usuario = texto_de_usuario[:-1]
-                    else:
-                        texto_de_usuario = texto_de_usuario + evento.unicode
+    
+    def agregar_seleccion_de_personaje_a_tablero(self):
+        if self.jugador.aventurero == None:
+            casilla_inicial = Azar.get_casilla_inicial(self.partida.tablero.casillas)
+            self.background.blit(self.jugador.aventurero.sprite, casilla_inicial.coordenadas)
+
+
+
+        
+        
+ 
+
                 
-                for boton in botones_de_seleccion_de_personaje:
-                    if evento.type == pygame.MOUSEBUTTONDOWN:
-                        if boton.mouse_colisiona(posicion_mouse) and partida.jugador.aventurero == None:
-                            boton.clickeado = True
-                            partida.jugador.agregar_aventurero(boton.clase_seleccionada)
-                            imprimir_tablero()
 
-                '''
-                if evento.type == pygame.MOUSEMOTION:
-                    if boton_comenzar.mouse_colisiona(posicion_mouse):
-                        boton_comenzar.color = (255,0,0)
-                    else:
-                        boton_comenzar.color = (0,255,0)
-                '''
-
-            reloj.tick(FPS)
-            pygame.display.update()
 
 
 
@@ -115,6 +75,7 @@ class Boton_con_imagen:
         self.ancho = imagen.get_width()
         self.alto = imagen.get_height()
         self.clickeado = False
+        self.clase_seleccionada = None
         self.asignar_clase()
     
 
@@ -170,5 +131,4 @@ class Boton:
         return False
 
 
-interfaz = Interfaz(partida.tablero)
 
