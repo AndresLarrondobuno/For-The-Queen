@@ -370,6 +370,7 @@ clases = {  "herrero": {
                 "nombre":"herrero",
                 "arma_inicial":'lanza',
                 "habilidad_pasiva":'firmeza',
+                "sprite_path":r'C:\Users\54115\Desktop\python\For The Queen\assets\dc-mon\holy\paladin.png',
                 "atributos":{
                     'vitalidad':85,
                     'fuerza':81,
@@ -388,6 +389,7 @@ clases = {  "herrero": {
                 "nombre":"erudito",
                 "arma_inicial":'tomo_de_aprendiz',
                 "habilidad_pasiva": 'reenfocar',
+                "sprite_path":r'C:\Users\54115\Desktop\python\For The Queen\assets\dc-mon\wizard.png',
                 "atributos":{
                     'vitalidad':65,
                     'fuerza':47,
@@ -406,6 +408,7 @@ clases = {  "herrero": {
                 "nombre":"bardo",
                 "arma_inicial":'laud_roto',
                 "habilidad_pasiva":'entretener',
+                "sprite_path":r'C:\Users\54115\Desktop\python\For The Queen\assets\dc-mon\unique\mnoleg.png',
                 "atributos":{
                     'vitalidad':73,
                     'fuerza':77,
@@ -424,6 +427,7 @@ clases = {  "herrero": {
                 "nombre":"cazador",
                 "arma_inicial":'arco_de_caza',
                 "habilidad_pasiva":'tiro_cargado',
+                "sprite_path":r'C:\Users\54115\Desktop\python\For The Queen\assets\dc-mon\deep_elf_master_archer.png',
                 "atributos":{
                     'vitalidad':71,
                     'fuerza':57,
@@ -448,7 +452,8 @@ criaturas = { "esqueleto":{
                     'dano_de_ataque':4,
                     'armadura':1,
                     'resistencia':0,
-                    'evasion':0
+                    'evasion':0,
+                    'sprite_path':r'C:\Users\54115\Desktop\python\For The Queen\assets\UNUSED\monsters\skeleton_small.png'
             },
             "lobo":{
                     'nombre':'lobo',
@@ -459,7 +464,8 @@ criaturas = { "esqueleto":{
                     'armadura':0,
                     'resistencia':0,
                     'velocidad':85,
-                    'evasion':5
+                    'evasion':5,
+                    'sprite_path':r'C:\Users\54115\Desktop\python\For The Queen\assets\dc-mon\animals\wolf.png'
             },
             "murcielago":{
                     'nombre':'murcielago',
@@ -470,7 +476,20 @@ criaturas = { "esqueleto":{
                     'armadura':0,
                     'resistencia':1,
                     'velocidad':90,
-                    'evasion':10
+                    'evasion':10,
+                    'sprite_path':r'C:\Users\54115\Desktop\python\For The Queen\assets\UNUSED\monsters\quasit.png'
+            },      
+            "serpiente":{
+                    'nombre':'serpiente',
+                    'arma':'colmillos',
+                    'nivel':1,
+                    'puntos_de_vida':30,
+                    'dano_de_ataque':1,
+                    'armadura':0,
+                    'resistencia':1,
+                    'velocidad':90,
+                    'evasion':10,
+                    'sprite_path':r'C:\Users\54115\Desktop\python\For The Queen\assets\UNUSED\monsters\yellow_snake.png'
             }
 }
 
@@ -512,6 +531,7 @@ class AdministradorDeBaseDeDatos:
         resultado = cursor.fetchall()[0] 
         self.efectuar_cambios()
         return resultado #type list
+
     
     def realizar_consulta_de_cambio(self, query):
         cursor  = self.conexion.cursor()
@@ -550,7 +570,8 @@ class AdministradorDeBaseDeDatos:
                     armadura INT,
                     resistencia INT,
                     evasion INT,
-                    puntos_de_enfoque INT)'''
+                    puntos_de_enfoque INT,
+                    sprite_path TEXT )'''
         cursor.execute(consulta)
         self.efectuar_cambios()
 
@@ -591,7 +612,8 @@ class AdministradorDeBaseDeDatos:
                     dano_de_ataque INT,
                     armadura INT,
                     resistencia INT,
-                    evasion INT )'''
+                    evasion INT,
+                    sprite_path TEXT )'''
         cursor.execute(consulta)
         self.efectuar_cambios()
     
@@ -692,7 +714,8 @@ class AdministradorDeBaseDeDatos:
                     '{clases[clase]['stats']['armadura']}',             
                     '{clases[clase]['stats']['resistencia']}',             
                     '{clases[clase]['stats']['evasion']}',             
-                    '{clases[clase]['stats']['puntos_de_enfoque']}' )'''
+                    '{clases[clase]['stats']['puntos_de_enfoque']}',
+                    '{clases[clase]['sprite_path']}' )'''
         cursor.execute(insert)
         self.efectuar_cambios()
     
@@ -713,7 +736,8 @@ class AdministradorDeBaseDeDatos:
                     '{criaturas[criatura]['dano_de_ataque']}',                    
                     '{criaturas[criatura]['armadura']}',                    
                     '{criaturas[criatura]['resistencia']}',                    
-                    '{criaturas[criatura]['evasion']}' )'''
+                    '{criaturas[criatura]['evasion']}',
+                    '{criaturas[criatura]['sprite_path']}' )'''
         cursor.execute(insert)
         self.efectuar_cambios()
     
@@ -817,6 +841,5 @@ class AdministradorDeBaseDeDatos:
 
 
 administradorDeBaseDeDatos = AdministradorDeBaseDeDatos("For_The_Queen")
-
 
 

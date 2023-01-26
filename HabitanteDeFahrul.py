@@ -1,8 +1,12 @@
+import pygame
 from Base_de_Datos import *
 from Azar import *
-from Constanstes_globales import *
+from Sprites import SpriteParaAventurero
 
-class Habitante_de_Fahrul:
+
+class HabitanteDeFahrul:
+
+    tamano_sprite_pequeno = (55,55)
     def __init__(self):
         self.arma = None
         self.nivel = 0
@@ -18,7 +22,7 @@ class Habitante_de_Fahrul:
         return str(self.nombre)
 
 
-class Criatura(Habitante_de_Fahrul):
+class Criatura(HabitanteDeFahrul):
     def __init__(self, nombre, nivel=0):
         super().__init__()
         datosCriatura = Criatura.obtener_datos_de_criatura(nombre)
@@ -26,7 +30,12 @@ class Criatura(Habitante_de_Fahrul):
         self.nombre = datosCriatura[1]        
         self.velocidad = datosCriatura[2]
         self.puntos_de_vida = datosCriatura[4] + nivel*3
+        self.puntos_de_ataque = datosCriatura[5]
+        self.armadura = datosCriatura[6]
+        self.resistencia = datosCriatura[7]
+        self.evasion = datosCriatura[8]
         self.vida_actual = self.puntos_de_vida
+        self.sprite = pygame.transform.scale(pygame.image.load(datosCriatura[9]), HabitanteDeFahrul.tamano_sprite_pequeno)
     
 
     @staticmethod
@@ -43,7 +52,7 @@ class Criatura(Habitante_de_Fahrul):
         pass
 
 
-class Aventurero(Habitante_de_Fahrul):
+class Aventurero(HabitanteDeFahrul):
     def __init__(self, nombre):
         super().__init__()
         self.nombre = nombre
@@ -69,6 +78,13 @@ class Aventurero(Habitante_de_Fahrul):
         self.experiencia = 0
 
         self.nivel = 1
+        self.casilla_inicial = None
+        self.casilla_ocupada = None
+        self.imagen = None
+        self.rect = None
+        
+        #comunicar posicion del personaje al tablero y a la interfaz
+        
 
     
     @staticmethod
@@ -81,9 +97,7 @@ class Aventurero(Habitante_de_Fahrul):
         conn.commit()
         return datos
     
-
     
-
     def agregar_informacion_de_clase(self, clase):
         datosDeClase = Aventurero.obtener_datos_de_clase(clase)
         self.arma = datosDeClase[2]
@@ -94,7 +108,15 @@ class Aventurero(Habitante_de_Fahrul):
         self.velocidad = datosDeClase[7]
         self.talento = datosDeClase[8]
         self.observacion = datosDeClase[9]
+        self.suerte = datosDeClase[10]
+        self.armadura = datosDeClase[11]
+        self.resistencia = datosDeClase[12]
+        self.evasion = datosDeClase[13]
+        self.puntos_de_enfoque = datosDeClase[14]
         self.puntos_de_vida = int( self.vida_base + self.nivel + (0.10*self.nivel*self.vitalidad) )
+        self.imagen = pygame.transform.scale(pygame.image.load(datosDeClase[15]), HabitanteDeFahrul.tamano_sprite_pequeno)
+        self.sprite = SpriteParaAventurero(self.imagen)
+        self.rect = self.imagen.get_rect()
 
 
     def aplicar_bonuses_de_stats(self):
@@ -161,9 +183,8 @@ class Aventurero(Habitante_de_Fahrul):
         pass
 
 
-    def moverse(self):
-        puntos_de_movimiento = Azar.rollear_dados(self.velocidad, 5)
-        #incrementar/decrementar posicion en la grilla segun donde clikea el jugador
+    def get_posicion(self):
+        pass
     
 
     
@@ -177,8 +198,8 @@ class Herrero(Aventurero):
         self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.nivel = 7
-        self.sprite = HERRERO
+
+
         
 
 class Erudito(Aventurero):
@@ -189,7 +210,7 @@ class Erudito(Aventurero):
         self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.sprite = ERUDITO
+
 
 
 class Cazador(Aventurero):
@@ -200,7 +221,6 @@ class Cazador(Aventurero):
         self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.sprite = CAZADOR
 
 
 class Bardo(Aventurero):
@@ -211,7 +231,6 @@ class Bardo(Aventurero):
         self.agregar_informacion_de_clase(self.clase)
         self.aplicar_bonuses_de_stats()
         self.vida_actual = self.puntos_de_vida
-        self.sprite = BARDO
 
 
 '''

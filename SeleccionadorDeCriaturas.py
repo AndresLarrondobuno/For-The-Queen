@@ -1,16 +1,14 @@
 from Base_de_Datos import *
-from Habitante_de_Fahrul import *
+from HabitanteDeFahrul import *
 from Azar import *
 import random as rng
 
-class Seleccionador_de_Criaturas:
-    def __init__(self, combate):
-        self.criaturas = self.generar_enfrentamiento(combate)
+class SeleccionadorDeCriaturas:
+    def __init__(self):
+        pass#self.criaturas = self.generar_enfrentamiento()
 
-        
 
-    def generar_enfrentamiento(self, combate):
-   
+    def generar_enfrentamiento(self):
         roll = Azar.roll(10)
         if roll:
             criaturas = self.generar_enjambre()

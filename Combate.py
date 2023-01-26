@@ -1,13 +1,14 @@
 import random as rng
-from Seleccionador_de_Criaturas import *
+from SeleccionadorDeCriaturas import *
 from Base_de_Datos import *
-from Habitante_de_Fahrul import *
+from HabitanteDeFahrul import *
 from Jugador import *
 
 class Combate:
     def __init__(self, jugador):
-        self.aventureros = jugador.aventureros #list
-        self.criaturas = Seleccionador_de_Criaturas(self).criaturas
+        self.aventurero = jugador.aventurero
+        self.criaturas = None
+    
     
     def asignar_dificultad(self):
         niveles_de_aventureros = [aventurero.nivel for aventurero in self.aventureros]
@@ -18,12 +19,4 @@ class Combate:
 
 
 
-andres = Jugador("andres")
-combate_uno = Combate(andres)
-
-print(combate_uno.aventureros)
-print(combate_uno.criaturas)
-combate_uno.asignar_dificultad()
-for aventurero in combate_uno.aventureros:
-    print(type(aventurero))
 
